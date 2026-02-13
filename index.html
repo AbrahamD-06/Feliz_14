@@ -3,100 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un Regalo para Ti</title>
+    <title>Un Jardín para Ti</title>
     <style>
+        :root {
+            --bg-color: #e3f2fd;
+            --rose-color: #e91e63;
+            --stem-color: #2e7d32;
+            --water-color: #4fc3f7;
+        }
+
         body {
             margin: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background-color: #fff5f8;
-            font-family: 'Arial', sans-serif;
+            justify-content: flex-end;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            padding-bottom: 50px;
         }
 
         h1 {
-            color: #d63384;
-            text-align: center;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeIn 2s forwards 0.5s;
-        }
-
-        .garden {
-            display: flex;
-            gap: 20px;
-        }
-
-        .flower {
-            position: relative;
-            transform: scale(0);
-            animation: bloom 2.5s ease-out forwards 1.5s;
-        }
-
-        /* Pétalos */
-        .petal {
             position: absolute;
-            background: #ff85a2;
-            width: 40px;
-            height: 70px;
-            border-radius: 50%;
-            top: -60px;
-            left: -20px;
-            transform-origin: bottom center;
+            top: 50px;
+            color: #ad1457;
+            text-align: center;
+            width: 100%;
+            opacity: 0;
+            animation: fadeIn 2s forwards 4s;
         }
 
-        .petal:nth-child(1) { transform: rotate(0deg); }
-        .petal:nth-child(2) { transform: rotate(72deg); }
-        .petal:nth-child(3) { transform: rotate(144deg); }
-        .petal:nth-child(4) { transform: rotate(216deg); }
-        .petal:nth-child(5) { transform: rotate(288deg); }
-
-        .center {
-            width: 30px;
-            height: 30px;
-            background: #ffd700;
-            border-radius: 50%;
-            position: relative;
+        /* Regadera */
+        .watering-can {
+            position: absolute;
+            top: 20%;
+            right: -150px;
+            font-size: 80px;
+            transform: rotate(-20deg);
+            animation: moveCan 5s ease-in-out forwards;
             z-index: 10;
         }
 
+        /* Gotas de agua */
+        .water-drops {
+            position: absolute;
+            top: 100px;
+            left: -20px;
+            opacity: 0;
+            animation: pourWater 2s ease-in-out 2s forwards;
+        }
+
+        .drop {
+            width: 4px;
+            height: 15px;
+            background: var(--water-color);
+            border-radius: 50%;
+            position: absolute;
+            animation: drip 0.8s infinite;
+        }
+
+        /* La Rosa */
+        .garden {
+            display: flex;
+            gap: 60px;
+            align-items: flex-end;
+        }
+
+        .rose {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flower-head {
+            width: 60px;
+            height: 60px;
+            background: var(--rose-color);
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            position: relative;
+            transform: scale(0);
+            animation: bloom 2s ease-out 3.5s forwards;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .flower-head::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #f06292;
+            border-radius: 50%;
+            top: 5px;
+            left: 10px;
+        }
+
         .stem {
-            width: 8px;
-            height: 150px;
-            background: #4caf50;
-            margin: 0 auto;
-            border-radius: 4px;
+            width: 10px;
+            height: 0;
+            background: var(--stem-color);
+            animation: growStem 2s ease-out 3s forwards;
+        }
+
+        /* Animaciones */
+        @keyframes moveCan {
+            0% { right: -150px; }
+            30% { right: 40%; transform: rotate(-20deg); }
+            50% { transform: rotate(-50deg); }
+            80% { transform: rotate(-50deg); right: 40%; opacity: 1; }
+            100% { right: -150px; opacity: 0; }
+        }
+
+        @keyframes pourWater {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes drip {
+            to { transform: translateY(150px); opacity: 0; }
+        }
+
+        @keyframes growStem {
+            to { height: 180px; }
         }
 
         @keyframes bloom {
-            0% { transform: scale(0) translateY(50px); }
-            100% { transform: scale(1) translateY(0); }
+            to { transform: scale(1); }
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
+
+        .soil {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: #5d4037;
+        }
     </style>
 </head>
 <body>
 
-    <h1>¡Este mensaje es para ti! <br> 🌸 Que tengas un lindo día 🌸</h1>
+    <h1>🌹 ¡Feliz 14 de Febrero! 🌹 <br> Cultivando detalles para ti</h1>
 
-    <div class="garden">
-        <div class="flower">
-            <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
-            <div class="center"></div>
-            <div class="stem"></div>
-        </div>
-        <div class="flower">
-            <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
-            <div class="center"></div>
-            <div class="stem"></div>
+    <div class="watering-can">
+        🚿
+        <div class="water-drops">
+            <div class="drop" style="left:0; animation-delay: 0.1s"></div>
+            <div class="drop" style="left:15px; animation-delay: 0.3s"></div>
+            <div class="drop" style="left:30px; animation-delay: 0.2s"></div>
         </div>
     </div>
+
+    <div class="garden">
+        <div class="rose">
+            <div class="flower-head"></div>
+            <div class="stem"></div>
+        </div>
+        <div class="rose">
+            <div class="flower-head" style="animation-delay: 3.8s"></div>
+            <div class="stem" style="animation-delay: 3.2s"></div>
+        </div>
+    </div>
+
+    <div class="soil"></div>
 
 </body>
 </html>
