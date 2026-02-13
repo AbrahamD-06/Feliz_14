@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Regalo para Ti</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff5f8;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #d63384;
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+        }
+
+        .garden {
+            display: flex;
+            gap: 20px;
+        }
+
+        .flower {
+            position: relative;
+            transform: scale(0);
+            animation: bloom 2.5s ease-out forwards 1.5s;
+        }
+
+        /* Pétalos */
+        .petal {
+            position: absolute;
+            background: #ff85a2;
+            width: 40px;
+            height: 70px;
+            border-radius: 50%;
+            top: -60px;
+            left: -20px;
+            transform-origin: bottom center;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+
+        .center {
+            width: 30px;
+            height: 30px;
+            background: #ffd700;
+            border-radius: 50%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stem {
+            width: 8px;
+            height: 150px;
+            background: #4caf50;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        @keyframes bloom {
+            0% { transform: scale(0) translateY(50px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Este mensaje es para ti! <br> 🌸 Que tengas un lindo día 🌸</h1>
+
+    <div class="garden">
+        <div class="flower">
+            <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+            <div class="center"></div>
+            <div class="stem"></div>
+        </div>
+        <div class="flower">
+            <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+            <div class="center"></div>
+            <div class="stem"></div>
+        </div>
+    </div>
+
+</body>
+</html>
